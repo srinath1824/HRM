@@ -1,0 +1,65 @@
+
+
+body{
+  height: 100%;
+  font-family: 'Times New Roman', Times, serif, sans-serif;
+    /* background-color: #6a926fc0; */
+
+}
+*{margin: 0px; 
+    padding: 0px; 
+    box-sizing: border-box;}
+
+        
+.Customgrid{
+    width: auto;
+    margin: 30px auto;
+    background-color: #9490be;
+
+}
+.Customgrid input{
+        width: 100%;
+
+    text-align: center;
+    box-sizing: border-box;
+  padding: 8px 0px;
+  border: 0.5px solid #000000;
+  border-radius: 5px;
+  margin: 7px;  color: #010e0f;
+  transform: all 0.5s ease;
+  box-shadow: 3px 3px 3px  #000000;
+  outline: none;
+  
+}
+
+input{
+  width:  20% ;
+  text-align: center;
+  box-sizing: border-box;
+padding: 8px 0px;
+border: 0.5px solid #000000;
+border-radius: 5px;
+margin: 7px;  color: #010e0f;
+transform: all 0.5s ease;
+box-shadow: 3px 3px 3px  #000000;
+outline: none;
+}
+.Customgrid-p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1;
+    color: #000000;
+    margin: 7px;
+    
+  }
+  
+
+.Customgrid button{
+    border: 1px ;
+  border-radius: 0px;
+  box-shadow: 5px 5px 5px  #000000;
+  height: 60px;
+  cursor: pointer;
+  margin: 7px;
+  padding-left: 10px;
+}

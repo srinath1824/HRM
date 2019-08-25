@@ -1,0 +1,87 @@
+/* .RegisterApp{
+  background-color: rgb(89, 150, 107);
+  width: 100%;
+height: 656px;
+}
+.RegisterApp p{  
+  display: flexbox;
+  width: 500px;
+  text-align: left;
+  margin-left:  100px ;
+
+  
+}
+.RegisterApp input {
+  height: 20px;
+  width: 300px;
+  margin-right:  200px ;
+}
+
+.RegisterApp select{ 
+  height: 20px;
+  width: 300px;
+  margin-right:  200px ;
+}
+.RegisterApp button{
+  width: 100px;
+  margin-left: 50px;
+  margin-top: 25px;
+
+}
+.RegisterApp input[type="submit"] {
+  cursor: pointer;
+  text-align: center;
+  margin-top: center;
+  margin-left: 215px;
+  height: 30px;
+  width: 70px;
+  font-weight: bold;
+
+}
+
+.RegisterApp-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.RegisterApp-link {
+  color: #61dafb;
+}
+
+.RegisterApp h1{
+  margin-left:  200px ;
+
+} */
+
+/* .RegisterApp input {
+  height: 20px;
+  width: 300px;
+  margin-right:  200px ;
+} */
+
+
+/* .RegisterApp button{
+  width: 100px;
+  margin-left: 50px;
+  margin-top: 25px;
+
+} */
+
+ .nav {
+  list-style-type: none;
+  text-align: center;
+  display: inline-flex;
+  margin:0;
+  padding:0;
+  }
+  .nav li{
+  display: inline-block;
+  font-size: 20px;
+  padding:20px;
+  }

@@ -1,0 +1,65 @@
+
+
+
+.ProfileApp{
+  background-color: rgb(126, 90, 180);
+
+}
+.ProfileApp p{
+  display: flexbox;
+  width: 500px;
+  text-align: left;
+  margin-left:  100px ;
+
+}
+.ProfileApp input {
+  height: 20px;
+  width: 300px;
+
+  margin-right:  200px ;
+}
+.ProfileApp select{
+  height: 20px;
+  width: 300px;
+
+  margin-right:  200px ;
+  
+}
+.ProfileApp button{
+  width: 100px;
+  margin-left: 50px;
+  margin-top: 25px;
+
+}
+.ProfileApp input[type="submit"] {
+  cursor: pointer;
+  text-align: center;
+  margin-top: center;
+  height: 30px;
+  width: 70px;
+  font-weight: bold;
+
+}
+
+.ProfileApp-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.ProfileApp-link {
+  color: #61dafb;
+}
+
+.ProfileApp h1{
+  margin-left:  200px ;
+
+}
+
+
+
