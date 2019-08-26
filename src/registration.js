@@ -43,6 +43,8 @@ class RegisterForm extends React.Component {
           this.setState({fields:fields});
           alert("Form submitted");
       }
+      console.log("wwwwww");
+      console.log(this.state);
       fetch("http://172.16.75.112:8080/trp/register",{
       method: 'POST',
       headers: {
@@ -50,13 +52,13 @@ class RegisterForm extends React.Component {
         'cache-control': 'no-cache',
       },  
       body: JSON.stringify({
-        first_Name: this.state.fields.First_name,
-        last_Name: this.state.fields.Last_name,
-        phone: this.state.fields.Phone,
-        userEmail: this.state.fields.Email,
-        securityQuestion: this.state.fields.SecurityQuestion,  
-        user_Id: this.state.fields.Username,
-        user_pwd:this.state.fields.Userpwd
+        first_Name: this.state.fields.FirstName,
+        last_Name: this.state.fields.LastName,
+        phone: this.state.fields.mobileno,
+        userEmail: this.state.fields.emailid,
+        // securityQuestion: this.state.fields.SecurityQuestion,  
+        user_Id: this.state.fields.username,
+        user_pwd:this.state.fields.password
         }),
     })  
     .then(res => res.json())

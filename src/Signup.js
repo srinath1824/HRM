@@ -54,7 +54,7 @@ handelregister = () => {
   })
 }
   switch(e) {
-    if (e.target.id === "login") {
+    if (e === "login") {
       this.setState({
         showLogin: true
       })
@@ -67,13 +67,11 @@ handelregister = () => {
     }
   }
   validate(errors) {
+
+    this.switch("login")
+
     console.log(errors)
     if(errors) {
-      this.setState({
-        is_valid_user: true
-      });
-    }
-
     fetch("http://172.16.75.112:8080/trp/login",{
       method: 'POST',
       headers: {
@@ -115,6 +113,7 @@ handelregister = () => {
               });
             }
           )
+    }
 }  
 
 Signupcontent() {
@@ -152,7 +151,6 @@ logincontent() {
       <div className="Login-form">
       <h1 >Sign In</h1>
       <br/>
-      <form onSubmit={() => this.validate(errors)}>
       <TextField
         id="standard-name"
         label="Enter Username"
@@ -178,7 +176,7 @@ logincontent() {
         <div className="errorMsg">{errors.password}</div> */}
         <br />
         <br />
-        <Button type="submit" variant="contained" color="primary">
+        <Button onClick={(errors) => this.validate(errors)} variant="contained" color="primary">
           Login
         </Button>
         {/* <input type="submit" value="Login" /> */}
@@ -188,7 +186,6 @@ logincontent() {
         <p>
           {this.state.errormessage}
         </p>
-      </form>
         <a href="#">Forgot Username or Password</a>
         <br />
         <br/>

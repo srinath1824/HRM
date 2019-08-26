@@ -91,8 +91,9 @@ class Register extends Component {
     // }
   }
   
-  submit(e) {
-    
+  submit() {
+    console.log("wwwwww");
+    console.log(this.state);
     e.preventDefault();
     // const Fname=document.getElementById("firstName").value;
     // const Lname=document.getElementById("lastName").value;
@@ -160,7 +161,7 @@ class Register extends Component {
     return (
       <div className="RegisterApp">
         <h1>Register</h1>
-        <form onSubmit={(e) => this.submit(e)}>
+        <form onSubmit={() => this.submit()}>
         <ul className="nav">
             <li>
               <label>First name*
