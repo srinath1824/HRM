@@ -4,7 +4,7 @@ export default function Header() {
     const pStyle = {
         // border: '5px solid pink',
         textAlign: 'center',
-        backgroundColor: 'white',
+        backgroundColor: '#ccffcc',
         padding: '10px',
         color: 'dodgerblue'
     }

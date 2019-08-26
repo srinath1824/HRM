@@ -3,11 +3,14 @@ import './Signup.css';
 import Customgrid from './datagrid';
 // import Register from './register';
 import RegisterForm from './registration'
+import { Link, Route } from 'react-router';
+import { Button } from '@material-ui/core';
+import TextField from '@material-ui/core/TextField';
 
 class Signup extends Component {
 
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       username: "",
       showLogin: true,
@@ -15,7 +18,10 @@ class Signup extends Component {
       addprofileclicked: false,
       errormessage:"",
       UserId: "",
-      Password: ""
+      Password: "",
+      errusername: "",
+      errpassword: "",
+      formIsValid: true
     }
   }
 
@@ -33,7 +39,6 @@ class Signup extends Component {
   }
   
   addregister(e) {
-
     this.setState({
       addregisterclicked: true
     })
@@ -61,13 +66,13 @@ handelregister = () => {
       })
     }
   }
-  validate() {
-    // const username=document.getElementById("user_id").value;
-    // const userpwd=document.getElementById("user_pwd").value;
-
-    this.setState({
-      is_valid_user: true
-    });
+  validate(errors) {
+    console.log(errors)
+    if(errors) {
+      this.setState({
+        is_valid_user: true
+      });
+    }
 
     fetch("http://172.16.75.112:8080/trp/login",{
       method: 'POST',
@@ -103,9 +108,6 @@ handelregister = () => {
                   }
                   }
                     },
-            // Note: it's important to handle errors here
-            // instead of a catch() block so that we don't swallow
-            // exceptions from actual bugs in components.
             (error) => {
               this.setState({
                 isLoaded: true,
@@ -117,42 +119,84 @@ handelregister = () => {
 
 Signupcontent() {
   return (
-    <div className="Signup-form">
-      {/* <Register /> */}
+    // <div className="Signup-form">
+      // <Link to="/register"></Link>
       <RegisterForm />
-    </div>
+    // </div>
   )
 }
 
-  logincontent() {
-    return (
-      <div className="Login-form">
-        <h1>Sign In</h1>
-        <br/>
-        <form onSubmit={() => this.validate()}>
-          <p>User ID:</p>
-          <input type="text" name="UserId" id= "user_id" placeholder="Enter User Id" onChange={(e) => this.handleChange(e)}/>
-          <br />
-          <p>Password:</p>
-          <input type="password" name="Password" id="user_pwd" placeholder="Enter Your Password" onChange={(e) => this.handleChange(e)}/>
-          <br />
-          <br />
-          <input className="registerbutton" type="submit" value="Login" />
-          <br />     
-          <p>
-            {this.state.errormessage}
-          </p>
-        </form>
-          <a href="#">Forgot Username or Password</a>
-          <br />
-          <br/>
-          <div input type="checkbox" name="Remember" value="Remember me"> Remember me </div>
-          <div className="registerbutton" onClick={(e) => this.switch(e)}>Register Now</div>
-          <br />
-      </div>
-      )
-      ;
+logincontent() {
+  let errors = {
+    username: "",
+    password: ""
+  };
+
+  if (this.state.UserId === "") {
+    // this.setState({ formIsValid : false, ...state,
+    errors.username = "Please enter your Username.";
+    // this.setState({formIsValid : false});
+    // this.setState({errusername: errors.username});
   }
+
+  if (this.state.Password === "") {
+    // this.setState({ formIsValid : false, ...state, password: "Please enter your Password"});
+    // this.setState({formIsValid : false});
+    errors.password= 'Please enter your Password.';
+    // this.setState({errpassword: errors.password})
+  }
+
+  
+  return (
+    <div>
+      <div className="Login-form">
+      <h1 >Sign In</h1>
+      <br/>
+      <form onSubmit={() => this.validate(errors)}>
+      <TextField
+        id="standard-name"
+        label="Enter Username"
+        onChange={(e) => this.handleChange(e)}
+        margin="normal"
+        name="UserId"
+      />
+      <div className="errorMsg">{errors.username}</div>
+      <TextField
+        id="standard-name"
+        label="Enter Password"
+        onChange={(e) => this.handleChange(e)}
+        margin="normal"
+        name="Password"
+      />
+      <div className="errorMsg">{errors.password}</div>
+        {/* <p>User ID:</p>
+        <input type="text" name="UserId" id= "user_id" placeholder="Enter User Id" onChange={(e) => this.handleChange(e)}/>
+        <div className="errorMsg">{errors.username}</div>
+        <br />
+        <p>Password:</p>
+        <input type="password" name="Password" id="user_pwd" placeholder="Enter Your Password" onChange={(e) => this.handleChange(e)}/>
+        <div className="errorMsg">{errors.password}</div> */}
+        <br />
+        <br />
+        <Button type="submit" variant="contained" color="primary">
+          Login
+        </Button>
+        {/* <input type="submit" value="Login" /> */}
+        {/* <div className="registerbtn" onClick={(e) => this.switch(e)}>Register Now</div> */}
+        <Link to="/register">Register Now</Link>
+        <br />     
+        <p>
+          {this.state.errormessage}
+        </p>
+      </form>
+        <a href="#">Forgot Username or Password</a>
+        <br />
+        <br/>
+        <div input type="checkbox" name="Remember" value="Remember me"> Remember me </div>
+        <br />
+      </div>
+    </div>)
+}
 
   render() {
     if(this.state.is_valid_user){
@@ -161,13 +205,7 @@ Signupcontent() {
           <Customgrid/>
           </div>
       )
-    }   
-
-  //   if (this.state.addregisterclicked) {
-  //     return (
-  //         <Register handelregister={this.handelregister} />
-  //     )
-  // }       
+    } 
 
     let content = ''
     if (this.state.showLogin) {
@@ -178,13 +216,7 @@ Signupcontent() {
     }
     return (
       <div className="Apps">
-
-        {/* <div className="btn" onClick={(e) => this.switch(e)} id="login">Login</div>
-        <div className="btn" onClick={(e) => this.switch(e) } id="signup">Signup</div> */}
-        <div className="container">
           {content}
-        </div>
-
       </div>
     )
   }

@@ -12,15 +12,14 @@
   }
   
   form label, form input {
-    display: block;
+    display: inline-block;
     margin-bottom: 10px;
-    width: 90%;
   }
   
   form input {
     padding: 10px;
     border: solid 1px #BDC7D8;
-  
+    width: 100%;
   }
   
   .button {
@@ -40,3 +39,4 @@
     color: #6B8E23;
     margin-bottom: 10px;
   }
+  

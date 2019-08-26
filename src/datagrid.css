@@ -32,7 +32,7 @@ body{
   
 }
 
-input{
+/* input{
   width:  20% ;
   text-align: center;
   box-sizing: border-box;
@@ -43,7 +43,7 @@ margin: 7px;  color: #010e0f;
 transform: all 0.5s ease;
 box-shadow: 3px 3px 3px  #000000;
 outline: none;
-}
+} */
 .Customgrid-p {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;

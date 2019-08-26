@@ -2,22 +2,23 @@
 
 
 .ProfileApp{
-  background-color: rgb(126, 90, 180);
-
+  background-color: #ffffff;
+  height: 20px;
+  width: 300px;
+  text-align: center;
 }
 .ProfileApp p{
   display: flexbox;
   width: 500px;
-  text-align: left;
   margin-left:  100px ;
 
 }
-.ProfileApp input {
+/* .ProfileApp input {
   height: 20px;
   width: 300px;
 
   margin-right:  200px ;
-}
+} */
 .ProfileApp select{
   height: 20px;
   width: 300px;

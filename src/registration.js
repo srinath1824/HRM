@@ -1,7 +1,10 @@
 import React from 'react';
 import Signup from './Signup';
-import './style.css';
+import './Signup.css';
 import './register.css';
+import { Redirect, Link } from 'react-router';
+import TextField from '@material-ui/core/TextField';
+import { Button } from '@material-ui/core';
 
 class RegisterForm extends React.Component {
     constructor() {
@@ -10,7 +13,7 @@ class RegisterForm extends React.Component {
         fields: {},
         errors: {},
         is_valid_user:false,
-
+        cancel: false
       }
 
       this.handleChange = this.handleChange.bind(this);
@@ -47,13 +50,13 @@ class RegisterForm extends React.Component {
         'cache-control': 'no-cache',
       },  
       body: JSON.stringify({
-        first_Name: this.state.First_name,
-        last_Name: this.state.Last_name,
-        phone: this.state.Phone,
-        userEmail: this.state.Email,
-        securityQuestion: this.state.SecurityQuestion,  
-        user_Id: this.state.Username,
-        user_pwd:this.state.Userpwd
+        first_Name: this.state.fields.First_name,
+        last_Name: this.state.fields.Last_name,
+        phone: this.state.fields.Phone,
+        userEmail: this.state.fields.Email,
+        securityQuestion: this.state.fields.SecurityQuestion,  
+        user_Id: this.state.fields.Username,
+        user_pwd:this.state.fields.Userpwd
         }),
     })  
     .then(res => res.json())
@@ -177,6 +180,11 @@ class RegisterForm extends React.Component {
 
     }
 
+    canclebtn() {
+      this.setState({
+        cancel: true
+      })
+    }
 
 
   render() {
@@ -184,51 +192,115 @@ class RegisterForm extends React.Component {
       return(
         <div>
           <Signup/>
-          </div>
+        </div>
       )
     }
+    // if(this.state.cancel){
+    //   // this.props.history.push(`/`)
+    //   // <Redirect to='/' />
+    // }
+    
     return (
     
-     <div id="RegisterApp">
-        <h3>Registration page</h3>
+    <div className='Signup-form'>
+        <h3 style={{textAlign: 'center'}}>Registration page</h3>
         <form method="post"  name="userRegistrationForm" onSubmit= {this.submituserRegistrationForm} >
         <ul className="nav">
-          <li>
-          <label>First name*</label>
-          <input type="text" name="FirstName" value={this.state.fields.FirstName} onChange={this.handleChange} />
+            <li>
+            <TextField
+              id="outlined-name"
+              label="FirstName"
+              name="FirstName"
+              onChange={this.handleChange}
+              margin="normal"
+              variant="outlined"
+            />
+          {/* <label>First name*</label>
+          <input type="text" name="FirstName" value={this.state.fields.FirstName} onChange={this.handleChange} /> */}
           <div className="errorMsg">{this.state.errors.FirstName}</div>
           </li>
           <li>
-          <label>Last name*</label>
+          {/* <label>Last name*</label>
           <input type="text" name="LastName" value={this.state.fields.LastName} onChange={this.handleChange}  />
+           */}
+           <TextField
+              id="outlined-name"
+              label="LastName"
+              name="LastName"
+              onChange={this.handleChange}
+              margin="normal"
+              variant="outlined"
+            />
           <div className="errorMsg">{this.state.errors.LastName}</div>
           </li>
         </ul>
+        <br/>
         <ul className="nav">
           <li>
-          <label>Mobile No:</label>
+          {/* <label>Mobile No:</label>
           <input type="text" name="mobileno" value={this.state.fields.mobileno} onChange={this.handleChange}   />
+           */}
+          <TextField
+              id="outlined-name"
+              label="Mobile no."
+              name="mobileno"
+              onChange={this.handleChange}
+              margin="normal"
+              variant="outlined"
+            />
           <div className="errorMsg">{this.state.errors.mobileno}</div>
           </li>
           <li>
-          <label>Email ID:</label>
+          {/* <label>Email ID:</label>
           <input type="text" name="emailid" value={this.state.fields.emailid} onChange={this.handleChange}  />
+           */}
+          <TextField
+              id="outlined-name"
+              label="Emailid"
+              name="emailid"
+              onChange={this.handleChange}
+              margin="normal"
+              variant="outlined"
+            />
           <div className="errorMsg">{this.state.errors.emailid}</div>
           </li>
         </ul>
+        <br/>
         <ul className="nav">
           <li>
-          <label>Username</label>
-          <input type="text" name="username" value={this.state.fields.username} onChange={this.handleChange} />
+          {/* <label>Username</label>
+          <input type="text" name="username" value={this.state.fields.username} onChange={this.handleChange} /> */}
+          <TextField
+              id="outlined-name"
+              label="Username"
+              name="username"
+              onChange={this.handleChange}
+              margin="normal"
+              variant="outlined"
+            />
           <div className="errorMsg">{this.state.errors.username}</div>
           </li>
           <li>
-          <label>Password</label>
-          <input type="password" name="password" value={this.state.fields.password} onChange={this.handleChange} />
+          {/* <label>Password</label>
+          <input type="password" name="password" value={this.state.fields.password} onChange={this.handleChange} /> */}
+          <TextField
+              id="outlined-name"
+              label="Password"
+              name="password"
+              onChange={this.handleChange}
+              margin="normal"
+              variant="outlined"
+            />
           <div className="errorMsg">{this.state.errors.password}</div>
           </li>
         </ul>
-        <input type="submit" className="button"  value="Register"/>
+        <br/>
+        <Button type="submit" variant="contained" color="primary">
+          Register
+        </Button>
+        {/* <input type="submit" style={{width: '20%'}} value="Register"/> */}
+        <div className="registerbtn" onClick={() => this.canclebtn()}></div>
+        <Link to="/">Cancel</Link>
         {/* <input style={{position: 'relative', left: "50%"}} value="Back" /> */}
         </form>
     </div>
